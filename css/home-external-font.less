@@ -1,0 +1,83 @@
+
+@font-face {
+    font-family: 'cantarell';
+    src: url('../font/cantarell-regular-webfont.eot');
+    src: url('../font/cantarell-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/cantarell-regular-webfont.woff') format('woff'),
+         url('../font/cantarell-regular-webfont.ttf') format('truetype'),
+         url('../font/cantarell-regular-webfont.svg#cantarellregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+// font icon;
+@font-face {
+  font-family: 'fontello';
+  src: url('../font/fontello.eot?45551972');
+  src: url('../font/fontello.eot?45551972#iefix') format('embedded-opentype'),
+       url('../font/fontello.woff?45551972') format('woff'),
+       url('../font/fontello.ttf?45551972') format('truetype'),
+       url('../font/fontello.svg?45551972#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?45551972#fontello') format('svg');
+  }
+}
+*/
+ 
+ [class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+     
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+ 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+ 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+ 
+.icon-search:before { content: '\e809'; } /* '' */
+.icon-calendar:before { content: '\e80d'; } /* '' */
+.icon-share:before { content: '\e807'; } /* '' */
+.icon-transform:before { content: '\e80c'; } /* '' */
+.icon-mobile:before { content: '\e813'; } /* '' */
+.icon-data:before { content: '\e812'; } /* '' */
+.icon-trend:before { content: '\e80e'; } /* '' */
+.icon-news:before { content: '\e80a'; } /* '' */
+.icon-settings:before { content: '\e808'; } /* '' */
+.icon-help:before { content: '\e806'; } /* '' */
+.icon-residents:before { content: '\e802'; } /* '' */
+.icon-service:before { content: '\e805'; } /* '' */
+.icon-agency:before { content: '\e80f'; } /* '' */
+.icon-business:before { content: '\e803'; } /* '' */
+.icon-official:before { content: '\e811'; } /* '' */
+.icon-government:before { content: '\e804'; } /* '' */
+.icon-online:before { content: '\e80b'; } /* '' */
+.icon-visitor:before { content: '\e801'; } /* '' */

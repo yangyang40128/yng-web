@@ -1,0 +1,12 @@
+{
+    "name": "yng-web",
+    "description": "goverment site",
+    "devDependencies": {
+    	"grunt":"~0.4.2",
+    	"grunt-bump":"~0.0.7",
+    	"grunt-contrib-less":"~0.6.1",
+    	"grunt-contrib-watch":"~0.4.4",
+    	"grunt-contrib-uglify":"~0.2.2",
+    	"grunt-contrib-connect":"~0.5.0"
+    }
+}

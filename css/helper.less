@@ -1,0 +1,164 @@
+.font(@scale){
+        font-size: @scale * 16px;
+        font-size: @scale * 1rem;
+}
+
+// content box sizing
+.box-sizing(@boxmodel) {
+        -webkit-box-sizing: @boxmodel;
+        -moz-box-sizing: @boxmodel;
+        box-sizing: @boxmodel;
+}
+
+// transition 
+.transition (@transitionA,@transitionB:X,...){
+        @prop: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
+        -webkit-transition: @prop;
+        -moz-transition: @prop;
+        -o-transition: @prop;  
+        transition: @prop; 
+}
+.transition-prop(@transitionA,@transitionB:X,...){
+        @prop: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
+        -webkit-transition: ~"-webkit-@{prop}";
+        -moz-transition: ~"-moz-@{prop}";
+        -ms-transition: ~"-ms-@{prop}";
+        -o-transition: ~"-o-@{prop}";
+        transition: ~"@{prop}";
+}
+// custom box shadow
+.box-shadow(@shadowA, @shadowB:X, ...){
+        @props: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
+        -webkit-box-shadow: @props;
+        -moz-box-shadow: @props;
+        -box-shadow: @props;
+        box-shadow: @props;
+}
+// custom text shadow
+.text-shadow(@textA, @textB:X, ...){
+        @props: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
+        -webkit-text-shadow: @props;
+        -moz-text-shadow: @props;
+        -text-shadow: @props;
+        text-shadow: @props;
+}
+
+// rounded border or shape
+.border-radius(@radius){
+        -webkit-border-radius:@radius;
+        -moz-border-radius:@radius;
+        border-radius:@radius;
+}
+
+// vertical gradient
+.gradient-vertical(@startColor: #555, @endColor: #333) {
+        background-image: -moz-linear-gradient(top, @startColor, @endColor);
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), to(@endColor));
+        background-image: -webkit-linear-gradient(top, @startColor, @endColor);
+        background-image: -o-linear-gradient(top, @startColor, @endColor);
+        background-image: linear-gradient(to bottom, @startColor, @endColor);
+        background-repeat: repeat-x;
+}
+
+// create a wavy gradient, known issue with anti-alias, use with caution
+.gradient-wave(@wave: #555; @other: #333) {
+        background-image:
+        -webkit-radial-gradient(center, @other, @other 70%, transparent 70%),
+        -webkit-linear-gradient(top, @other, @other 62%, @wave 62%, @wave);
+        background-image:
+        -moz-radial-gradient(center, @other, @other 70%, transparent 70%),
+        -moz-linear-gradient(top, @other, @other 62%, @wave 62%, @wave);
+        background-image:
+        radial-gradient(circle at 50% 50%, @other, @other 70%, transparent 70%),
+        linear-gradient(to bottom, @other, @other 62%, @wave 62%, @wave);
+        background-size: 64px 64px;
+        background-repeat: repeat-x;
+}
+.gradient-deg(@deg: 45deg;@startColor: @seashell;@endColor: transparent){
+        background-image: 
+                -webkit-linear-gradient(@deg,@endColor 0%,@startColor 25%,@endColor 25%,@startColor 50%,@endColor 50%,@startColor 75%,@endColor 75%,@startColor 100%,@endColor 100%);
+        background-image: 
+                   -moz-linear-gradient(@deg,@endColor 0%,@startColor 25%,@endColor 25%,@startColor 50%,@endColor 50%,@startColor 75%,@endColor 75%,@startColor 100%,@endColor 100%);
+        background-image: 
+                    -ms-linear-gradient(@deg,@endColor 0%,@startColor 25%,@endColor 25%,@startColor 50%,@endColor 50%,@startColor 75%,@endColor 75%,@startColor 100%,@endColor 100%);
+        background-image: 
+                     -o-linear-gradient(@deg,@endColor 0%,@startColor 25%,@endColor 25%,@startColor 50%,@endColor 50%,@startColor 75%,@endColor 75%,@startColor 100%,@endColor 100%);
+        background-image: 
+                        linear-gradient(@deg,@endColor 0%,@startColor 25%,@endColor 25%,@startColor 50%,@endColor 50%,@startColor 75%,@endColor 75%,@startColor 100%,@endColor 100%);
+        
+}
+.linear-gradient(@linearA, @linearB:X, ...){
+        @props: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
+        background-image: -webkit-linear-gradient(@props);
+        background-image: -moz-linear-gradient(@props);
+        background-image: -o-linear-gradient(@props);
+        background-image: linear-gradient(@props);
+}
+
+// background clipping
+.background-clip(@prop) {
+        -webkit-background-clip: @prop;
+        -moz-background-clip: @prop;
+        background-clip: @prop;
+}
+
+.animation(@animation){
+        -webkit-animation: @animation; 
+        -moz-animation: @animation; 
+        -o-animation: @animation; 
+        animation: @animation; 
+}
+.rotate (@deg) {
+        -webkit-transform: rotate(@deg);
+        -moz-transform: rotate(@deg);
+        -ms-transform: rotate(@deg);
+        -o-transform: rotate(@deg);
+}
+.rotateX (@deg) {
+        -webkit-transform: rotateX(@deg);
+        -moz-transform: rotateX(@deg);
+        -ms-transform: rotateX(@deg);
+        -o-transform: rotateX(@deg);
+        transform: rotateX(@deg);
+}
+.rotateY (@deg) {
+        -webkit-transform: rotateY(@deg);
+        -moz-transform: rotateY(@deg);
+        -ms-transform: rotateY(@deg);
+        -o-transform: rotateY(@deg);
+        transform: rotateY(@deg);
+}
+.scale (@scale) {
+        -webkit-transform: scale(@scale);
+        -moz-transform: scale(@scale);
+        -ms-transform: scale(@scale);
+        -o-transform: scale(@scale);
+        transform: scale(@scale);
+}
+.translate (@x, @y) {
+        -webkit-transform: translate(@x, @y);
+        -moz-transform: translate(@x, @y);
+        -ms-transform: translate(@x, @y);
+        -o-transform: translate(@x, @y);
+        transform: translate(@x, @y);
+}
+.translate3d (@x,@y,@z){
+        -webkit-transform: translate3d(@x,@y,@z);
+        -moz-transform: translate3d(@x,@y,@z);
+        -ms-transform: translate3d(@x,@y,@z);
+        -o-transform: translate3d(@x,@y,@z);
+        transform: translate3d(@x,@y,@z);
+}
+.scale(@scale){
+        -webkit-transform: scale(@scale);
+        -moz-transform: scale(@scale);
+        -ms-transform: scale(@scale);
+        -o-transform: scale(@scale);
+}
+.transform (@transformA, @transformB:X, ...){
+        @props: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
+        -webkit-transform: @props;
+        -moz-transform: @props;
+        -o-transform: @props;  
+        transform: @props; 
+}

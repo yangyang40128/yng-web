@@ -1,0 +1,95 @@
+.ls {
+    list-style-type: none;
+    overflow: hidden;
+    padding: 0;
+    .ls-item {
+        display: block;
+        float: left;
+    }
+}
+.clearfix {
+    &:before, &:after {
+        content:'';
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+// layout;
+ @grid-columns :12;
+ @grid-columns-width: 30px;
+ .make-column (@columns, @gutter:@grid-columns-width) {
+    position: relative;
+    float: left;
+    width: percentage(@columns / @grid-columns);
+    min-height: 1px;
+    .box-sizing(border-box);
+}
+.row {
+    display: block;
+    .clearfix();
+}
+.col-6 {
+    .make-column(6);
+}
+.col-2 {
+    .make-column(2);
+}
+.col-3 {
+    .make-column(3);
+}
+.col-10 {
+    .make-column(10);
+}
+.col-8 {
+    .make-column(8);
+}
+.col-4 {
+    .make-column(4);
+}
+.col-5 {
+    .make-column(5);
+}
+.col-7 {
+    .make-column(7);
+}
+// form;
+ .form {
+    input[type="text"], input[type="search"], input[type="email"], input[type="submit"], input[type="button"] {
+        -webkit-appearence: none;
+        border: none;
+        outline: 0;
+        padding: 0.5em;
+    }
+}
+.btn {
+    -webkit-appearence: none;
+    border: none;
+    outline: 0;
+    padding: 0.5em;
+    text-align: center;
+    background-color: gray;
+}
+// metro input;
+
+.metro-btn {
+    .btn();
+    &.search-btn {
+        background-color: fadeout(@white, 50%);
+        color: @masala;
+    }
+    
+}
+input.metro-input {
+    color: @masala;
+    border: 1px solid @casablanca;
+    background-color: fadeout(@white, 50%);
+    background-image: url("../img/placeholder.png");
+    background-position: 110%  center;
+    background-repeat: no-repeat;
+    background-clip: 0 0 0 0;
+    &:focus {
+        background-color: @white;
+    }
+}

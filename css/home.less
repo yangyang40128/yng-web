@@ -1,0 +1,197 @@
+
+body {
+    background: @casablanca;
+}
+.home {
+	font-family: @font-base;
+	background-image: url('../img/bg5.jpg');
+	background-repeat: none;
+	background-attachment: fixed;
+	background-position: left center;
+	background-size: cover;
+}
+.header {
+    background-color: fadeout(black, 20%);
+}
+.home-content {
+    position: absolute;
+    top: 6em;
+    bottom: 6em;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+}
+.slider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 400%;
+    .slider-item {
+        float: left;
+        width: percentage(1/4);
+    }
+    .item-wrapper {
+    	max-width: 1000px;
+    	margin: auto auto;
+    }
+	form {
+		max-width: 600px;
+		padding: 7em 0;
+		margin: auto auto;
+	}
+}
+// .home-nav;
+.home-nav {
+	list-style-type: none;
+	margin: 0;
+	.clearfix();
+	li {
+		position: relative;
+		&:before {
+			content: '';
+			position: absolute;
+			bottom: -3px;
+			width: 100%;
+			height: 3px;
+			background-color: @white;
+
+			visibility: hidden;
+		}
+		&:hover {
+			&:before {
+				visibility: visible;
+			}
+		}
+	}
+    a {
+        display: block;
+        padding: 1em;
+        text-align: center;
+        text-decoration: none;
+        color: @masala;
+        &.actived {
+            border-bottom: 1px solid @white;
+        }
+        &:hover {
+        	color: @white;
+        }
+    }
+    i {
+    	display: block;
+    	text-align: center;
+    }
+}
+.simple-nav {
+	margin: 0;
+	li {
+		padding: 1em 1em 1em 0;
+	}
+	li:last-child {
+		padding-right: 0;
+	}
+    a {
+    	position: relative;
+        display: block;
+        padding: 1em 1em 3em 1em;
+        color: @link-color;
+        text-decoration: none;
+        .transition(background 0.3s);
+       	&:hover {
+       		color: @white;
+       		i {
+       			padding: 0;
+       			.font(2);
+       			.rotate(-45deg);
+       		}
+       	}
+    }
+    i {
+    	position: absolute;
+    	right: 0;
+    	bottom: 0;
+    	padding: 1em;
+    	.transition-prop(transform 0.3s,font-size 0.3s);
+    }
+    li:nth-child(1) {
+    	a {
+    		
+        	background-color: fadeout(@casablanca, 10%);
+        	&:hover {
+        		background-color: @casablanca;
+        	}
+    	}
+    }
+    li:nth-child(2) {
+        a {
+        	background-color: fadeout(@emerald, 10%);
+        	&:hover {
+        		background-color: @emerald;
+        	}
+        }
+    }
+    li:nth-child(3) {
+        a {
+        	background-color: fadeout(@cerise, 10%);
+        	&:hover {
+        		background-color: @cerise;
+        	}
+        }
+    }
+}
+.detail-nav {
+	margin: 0;
+	a {
+		display: block;
+		padding: 1em;
+		text-decoration: none;
+		text-align: center;
+		color: @link-color;
+		background-color: fadeout(@black, 10%);
+
+		border-left: 1px solid @masala;
+		.box-shadow(-1px 0 fadeout(@black,5%));
+		&:hover {
+			color: @white;
+		}
+	}
+	li:first-child {
+		a {
+			border: none;
+			.box-shadow(none);
+		}
+	}
+}
+.home-footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: fadeout(black, 10%);
+
+    ul {
+    	margin: 0;
+    }
+    li:first-child {
+		a {
+			border: none;
+			.box-shadow(none);
+		}
+	}
+    a {
+    	display: block;
+    	padding: 1em;
+    	text-align: center;
+    	text-decoration: none;
+    	color: @link-color;
+
+    	border-left: 1px solid @masala;
+		.box-shadow(-1px 0 fadeout(@black,5%));
+		&:hover {
+			color: @white;
+		}
+    }
+    i {
+    	display: block;
+    	text-align: center;
+    }
+}
