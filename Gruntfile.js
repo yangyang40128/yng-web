@@ -43,14 +43,39 @@ module.exports = function(grunt) {
                     base:"."
                 }
             }
+        },
+        /*experiments*/
+        /*imgagemin: {
+            dynamic : {
+                files:
+                    //'public/asset/img': ['img/*.{gif,jpg,png}']
+                    {
+                        'public/asset/img/build/bg.jpg':'public/asset/img/bg.jpg'
+                    }
+            }
+        },*/
+        browser_sync: {
+            files: {
+                src : 'public/asset/style.css'
+            }
         }
     });
+
+
+
+
+    
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
 
+    grunt.loadNpmTasks('grunt-browser-sync');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
+
     grunt.registerTask('site','connect:yng:keepalive');
     grunt.registerTask('default', ['less','uglify']);
+
+    grunt.registerTask('experiments',['browser_sync']);
 
 };
