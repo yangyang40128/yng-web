@@ -15,7 +15,7 @@
     bottom: 76px;
     right: 0;
     left: 0;
-    //overflow: hidden;
+    overflow: hidden;
 }
 .slider {
     position: absolute;
@@ -202,6 +202,27 @@
 .resident-nav {
     a {
         background-color: fadeout(@emerald, 50%);
+    }
+}
+.slider-nav {
+    a {
+        display: block;
+        .font(2);
+        text-decoration: none;
+        height: 60px;
+        line-height: 58px;
+        padding: 0 0.25em;
+        background-color: fadeout(@black, 50%);
+        position: absolute;
+        top: 50%;
+        margin-top: -30px;
+        color: @white;
+    }
+    a.slider-left {
+        left: 0;
+    }
+    a.slider-right {
+        right: 0;
     }
 }
 .home-footer {
