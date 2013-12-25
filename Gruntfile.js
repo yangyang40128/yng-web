@@ -50,7 +50,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: 'js/*.js',
-                tasks: ['uglify:dist']
+                tasks: ['uglify:dist','concat:dist']
             }
         },
         connect: {

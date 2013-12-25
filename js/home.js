@@ -37,6 +37,7 @@
 				elem.onclick = function ( ev ) {
 					self.old = self.current;
 					self.current = index;
+					console.log(index);
 					self._jump();
 				}
 			});
@@ -56,6 +57,7 @@
 			this.slider.style.cssText = "-webkit-transform:translate("+translate+"%)";
 		},
 		_jump : function () {
+			console.log(this.current+"jump");
 			this._toggleNav();
 			this._slide();
 		},
@@ -84,12 +86,15 @@
 		},
 		_toggleNav:function () {
 			// show or hide the nav
+			console.log(this.itemCount);
 			switch ( this.current ) {
 				case 0: 
 					this.prev.style.cssText = "display:none;";
+					this.next.style.cssText = "display:block;";
 					break;
 				case this.itemCount - 1:
 					this.next.style.cssText = "display:none";
+					this.prev.style.cssText = "display:block;";
 					break;
 				default:
 					this.prev.style.cssText = "display:block;";
