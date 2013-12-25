@@ -1,12 +1,12 @@
 ;(function(window){
 	function Slider ( elem ,options) {
-		this.elem = elem;
+		this.sliderController = elem;
 		this.options = options;
 		this._init();
 	}
 	Slider.prototype = {
 		_init : function () {
-			var check = (this.slider = this.elem.querySelector("."+this.options.slider)) && (this.sliderItem = this.slider.querySelectorAll("."+this.options.sliderItem));
+			var check = (this.slider = this.sliderController.querySelector("."+this.options.slider)) && (this.sliderItem = this.slider.querySelectorAll("."+this.options.sliderItem)) && (this.sliderFullNav = this.sliderController.querySelectorAll("."+this.options.sliderFullNav));
 
 			if ( check ) {
 				this.itemCount = this.sliderItem.length;
@@ -32,6 +32,14 @@
 				// slide slider;
 				self._slide();
 			}
+			// full nav click;
+			Array.prototype.slice.call(this.sliderFullNav).forEach(function(elem,index,array){
+				elem.onclick = function ( ev ) {
+					self.old = self.current;
+					self.current = index;
+					self._jump();
+				}
+			});
 		},
 		_config:function () {
 			// parse nav;
@@ -46,6 +54,10 @@
 			var translate = -1*this.current*100/this.itemCount;
 
 			this.slider.style.cssText = "-webkit-transform:translate("+translate+"%)";
+		},
+		_jump : function () {
+			this._toggleNav();
+			this._slide();
 		},
 		_parseNav: function () {
 
@@ -67,7 +79,7 @@
 				nav.appendChild(this.next);
 				nav.appendChild(this.prev);
 				classie.add(nav,"slider-nav");
-				this.elem.appendChild(nav);
+				this.sliderController.appendChild(nav);
 			}
 		},
 		_toggleNav:function () {
@@ -83,6 +95,9 @@
 					this.prev.style.cssText = "display:block;";
 					this.next.style.cssText = "display:block";
 			}
+			// active home -nav;
+			classie.remove(this.sliderFullNav[this.old],"active");
+			classie.add(this.sliderFullNav[this.current],"active");
 		}
 	}
 	window.Slider = Slider;
@@ -90,6 +105,7 @@
 onDomReady(function(){
 	new Slider (document.querySelector(".slider-controller"),{
 		"slider" : "slider",
-		"sliderItem" : "slider-item"
+		"sliderItem" : "slider-item",
+		"sliderFullNav" : "slider-full-nav li"
 	});
 });

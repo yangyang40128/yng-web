@@ -7,11 +7,15 @@
     background-size: cover;
 }
 .header {
-    background-color: fadeout(black, 20%);
+    height: 76px;
+    position: relative;
+    float: left;
+    z-index: 100;
+    background-color: fadeout(black, 40%);
 }
 .home-content {
     position: absolute;
-    top: 76px;
+    top: 0px;
     bottom: 76px;
     right: 0;
     left: 0;
@@ -19,7 +23,7 @@
 }
 .slider {
     position: absolute;
-    top: 0;
+    top: 76px;
     bottom: 0;
     width: 400%;
     .slider-item {
@@ -59,9 +63,14 @@
 }
 // .home-nav;
  .home-nav {
+    position: absolute;
+    right: 0;
+    top: 0;
     list-style-type: none;
     margin: 0;
+    padding: 0;
     .clearfix();
+    background-color: fadeout(black, 40%);
     li {
         position: relative;
         &:before {
@@ -73,9 +82,12 @@
             background-color: @white;
             visibility: hidden;
         }
-        &:hover {
+        &:hover,&.active {
             &:before {
                 visibility: visible;
+            }
+            a {
+                color: @white;
             }
         }
     }

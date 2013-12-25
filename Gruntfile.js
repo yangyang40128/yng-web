@@ -30,6 +30,19 @@ module.exports = function(grunt) {
                 }
             }
         },
+        concat: {
+            options: {
+                seperator: ";"
+            },
+            dist: {
+                dest: 'public/asset/js/main.dev.js',
+                src : [
+                    'js/onDomReady.js',
+                    'js/classie.js',
+                    'js/home.js'
+                ]
+            }
+        },
         watch: {
             css: {
                 files: 'css/*.less',
@@ -60,7 +73,7 @@ module.exports = function(grunt) {
         },*/
         browser_sync: {
             files: {
-                src : 'public/asset/style.css'
+                src: 'public/asset/style.css'
             }
         }
     });
@@ -68,19 +81,19 @@ module.exports = function(grunt) {
 
 
 
-    
+
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
-
+    grunt.loadNpmTasks('grunt-contrib-concat');
 
     grunt.loadNpmTasks('grunt-browser-sync');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
 
-    grunt.registerTask('site','connect:yng:keepalive');
-    grunt.registerTask('default', ['less','uglify']);
+    grunt.registerTask('site', 'connect:yng:keepalive');
+    grunt.registerTask('default', ['less', 'uglify', 'concat']);
 
-    grunt.registerTask('experiments',['browser_sync']);
+    grunt.registerTask('experiments', ['browser_sync']);
 
 };
