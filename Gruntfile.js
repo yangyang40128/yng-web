@@ -25,7 +25,8 @@ module.exports = function(grunt) {
                     'public/asset/js/main.min.js': [
                         'js/onDomReady.js',
                         'js/classie.js',
-                        'js/home.js'
+                        'js/home.js',
+                        'js/modal.js'
                     ]
                 }
             }
@@ -39,7 +40,8 @@ module.exports = function(grunt) {
                 src : [
                     'js/onDomReady.js',
                     'js/classie.js',
-                    'js/home.js'
+                    'js/home.js',
+                    'js/modal.js'
                 ]
             }
         },

@@ -26,6 +26,7 @@
     top: 76px;
     bottom: 0;
     width: 400%;
+    .transition-prop(transform 0.3s);
     .slider-item {
         float: left;
         width: percentage(1/4);
@@ -267,5 +268,47 @@
     i {
         display: block;
         text-align: center;
+    }
+}
+// js control modal;
+.modal {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 50%;
+    height: 50%;
+    
+    margin: auto auto;
+    z-index: 1000;
+
+    background-color: @white;
+    .translate(0,-600%);
+    .transition-prop(transform 0.3s);
+    a.md-close {
+        display: block;
+        float: right;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        color: @link-color;
+        text-decoration: none;
+    }
+    &.open {
+        .translate(0,0);
+    }
+}
+.md-overlay {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: fadeout(@black, 50%);
+    display: none;
+    &.show {
+        display: block;
     }
 }

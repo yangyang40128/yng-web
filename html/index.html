@@ -10,7 +10,7 @@
 
 <body class="home">
     <div class="header col-5">
-        <div class="logo">lsfsdfsdogo</div>
+        <div class="logo">logo</div>
     </div>
     <div class="home-content slider-controller">
         <div class="slider">
@@ -22,11 +22,11 @@
                         </button>
                     </form>
                     <ul class="ls row simple-nav">
-                        <li class="ls-item col-2"><a href="#">TransForming <i class="icon-transform"></i></a>
+                        <li class="ls-item col-2"><a class="md-trigger" data-modal="md1" href="#">TransForming <i class="icon-transform"></i></a>
                         </li>
-                        <li class="ls-item col-4"><a href="#">Lastest News <i class="icon-news"></i> </a>
+                        <li class="ls-item col-4"><a class="md-trigger" data-modal="md2" href="#">Lastest News <i class="icon-news"></i> </a>
                         </li>
-                        <li class="ls-item col-6"><a href="#">Online Service <i class="icon-online"> </i></a>
+                        <li class="ls-item col-6"><a class="md-trigger" data-modal="md3" href="#">Online Service <i class="icon-online"> </i></a>
                         </li>
                     </ul>
                     <ul class="ls row detail-nav">
@@ -115,10 +115,6 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="slider-nav">
-            <a href="#" class="slider-left">&lt;</a>
-            <a href="#" class="slider-right">&gt;</a>
-        </div> -->
         <ul class="home-nav row col-7 slider-full-nav">
             <li class=" col-3"><a href="#"><i class="icon-government"></i>Government</a>
             </li>
@@ -142,6 +138,9 @@
             </li>
         </ul>
     </div>
+    <div id="md1" class="modal">modal 123 <a href="#" class="md-close">×</a></div>
+    <div id="md2" class="modal">modal 1234 <a href="#" class="md-close">×</a></div>
+    <div id="md3" class="modal">modal 12345 <a href="#" class="md-close">×</a></div>
 </body>
 
 </html>
