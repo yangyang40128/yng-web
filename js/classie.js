@@ -14,6 +14,9 @@
         };
         removeClass = function(elem, c) {
             elem.classList.remove(c);
+        };
+        emptyClass = function (elem ,c) {
+            elem.className = c;
         }
     } else {
         hasClass = function(elem, c) {
@@ -29,6 +32,9 @@
                 elem.className = elem.className.replace(classReg(c), ' ');
             }
         };
+        emptyClass = function (elem ,c) {
+            elem.className = c;
+        }
     }
 
     function toggleClass(elem, c) {
@@ -40,10 +46,13 @@
         addClass: addClass,
         removeClass: removeClass,
         toggleClass: toggleClass,
+        emptyClass:emptyClass,
+
         has: hasClass,
         add: addClass,
         remove: removeClass,
-        toggle: toggleClass
+        toggle: toggleClass,
+        empty: emptyClass,
     };
     if (typeof define === 'function' && define.amd) {
         define(classie);
