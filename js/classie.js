@@ -4,7 +4,7 @@
     function classReg(className) {
         return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
     }
-    var hasClass, addClass, removeClass;
+    var hasClass, addClass, removeClass,emptyClass;
     if ('classList' in document.documentElement) {
         hasClass = function(elem, c) {
             return element.classList.contains(c);

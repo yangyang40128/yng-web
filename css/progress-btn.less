@@ -1,0 +1,10 @@
+.progress-btn {
+	-webkit-appearance: none;
+	display: inline-block;
+	padding: 0 5em;
+	.p-btn-helper(@eucalyptus);
+}
+.p-btn-helper(@color) {
+	background-color: @color;
+	color: darken(@color, 10%);
+}

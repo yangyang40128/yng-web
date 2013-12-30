@@ -24,9 +24,11 @@ module.exports = function(grunt) {
                 files: {
                     'public/asset/js/main.min.js': [
                         'js/onDomReady.js',
+                        'js/modernizr.js',
                         'js/classie.js',
-                        'js/home.js',
-                        'js/modal.js'
+                        //'js/home.js',
+                        'js/modal.js',
+                        'js/slider.js'
                     ]
                 }
             }
@@ -37,11 +39,13 @@ module.exports = function(grunt) {
             },
             dist: {
                 dest: 'public/asset/js/main.dev.js',
-                src : [
+                src: [
                     'js/onDomReady.js',
+                    'js/modernizr.js',
                     'js/classie.js',
-                    'js/home.js',
-                    'js/modal.js'
+                    //'js/home.js',
+                    'js/modal.js',
+                    'js/slider.js'
                 ]
             }
         },
@@ -52,7 +56,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: 'js/*.js',
-                tasks: ['uglify:dist','concat:dist']
+                tasks: ['uglify:dist', 'concat:dist']
             }
         },
         connect: {
