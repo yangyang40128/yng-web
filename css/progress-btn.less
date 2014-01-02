@@ -1,10 +1,76 @@
 .progress-btn {
-	-webkit-appearance: none;
+
 	display: inline-block;
-	padding: 0 5em;
+
+	-webkit-appearance: none;
+	border: none;
+	outline: none;
+
+	
+	text-transform: uppercase;
+	letter-spacing: 1px;
+
+	.font(1);
+
+	padding: 10px 60px;
+
+	// progress text;
+	.progress-content {
+		position: relative;
+		display: block;
+		&:before,&:after {
+			// for progress error or success;
+			position: absolute;
+			right: 20px;
+			color: darken(@eucalyptus, 10%);
+			opacity: 0;
+			.transition(opacity 0.3s 0.3s);
+		}
+		&:before {
+			content: "success";
+		}
+		&:after {
+			content: "error";
+		}
+	}
+	// progress bar;
+	.progress {
+		background-color: lighten(@eucalyptus, 5%);
+		.progress-inner {
+			position: absolute;
+			left: 0;
+			background-color: darken(@eucalyptus, 5%);
+			&.horizontal {
+				top: 0;
+				width: 0;
+				height: 100%;
+				.transition(width 0.3s, opacity 0.3s);
+			}
+			&.vertical {
+				bottom: 0;
+				width: 100%;
+				height: 0;
+				.transition(height 0.3s, opacity 0.3s);
+			}
+		}
+	}
+	// call helper;
 	.p-btn-helper(@eucalyptus);
+	&.perspective {
+		.progress-perspective {
+			display: block;
+			.transition-prop(transform 0.3s);
+			.transform-style(preserve-3d);
+		}
+		.process-content,.progress {
+			outline: 1px solid rgba(0,0,0,0);
+		}
+	}
 }
 .p-btn-helper(@color) {
 	background-color: @color;
 	color: darken(@color, 10%);
+}
+.progress-btn[disabled] {
+	cursor: default;
 }

@@ -45,7 +45,17 @@ module.exports = function(grunt) {
                     'js/classie.js',
                     //'js/home.js',
                     'js/modal.js',
-                    'js/slider.js'
+                    'js/slider.js',
+                    'js/progress-btn.js'
+                ]
+            },
+            progressBtn :{
+                dest: 'public/asset/js/progress-dev.js',
+                src: [
+                    'js/onDomReady.js',
+                    'js/modernizr.js',
+                    'js/classie.js',
+                    'js/progress-btn.js'
                 ]
             }
         },
@@ -56,7 +66,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: 'js/*.js',
-                tasks: ['uglify:dist', 'concat:dist']
+                tasks: ['uglify:dist', 'concat:dist','concat:progressBtn']
             }
         },
         connect: {
