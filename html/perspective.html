@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>perspective </title>
+	<style>
+		body {
+			background-color: #f0f0f0;
+		}
+		div.perspective {
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 0;
+			bottom: 0;
+
+			height: 200px;
+			width: 200px;
+
+			margin: auto auto;
+			/*transform perspective*/
+			-webkit-perspective-origin: 150% 150%;
+			-webkit-transform-style:perserve-3d;
+			-webkit-perspective: 250px;
+
+		}
+		.perspective-content {
+			position: absolute;
+
+			right: 0;
+			left: 0;
+			top: 0;
+			bottom: 0;
+
+			/*margin: auto auto;*/
+
+			text-align: center;
+			line-height: 100px;
+			height: 100px;
+			width: 100px;
+			
+		}
+		#perspective-content:target {
+			width: 100px;
+			height: 100px;
+		}
+		.perspective-1 {
+			background-color: rgba( 0, 0, 0, 0.3 );
+			-webkit-transform: translateZ(50px);
+
+		}
+		.perspective-2 {
+			background-color: rgba( 0, 255, 0, 1 );
+			-webkit-transform: translateZ(-50px);
+
+
+		}
+		.perspective-3 {
+			background-color: rgba( 196, 0, 0, 0.7 );
+			-webkit-transform: rotateY( 90deg) translateZ(50px);
+
+		}
+		.perspective-4 {
+			background-color: rgba( 0, 0, 196, 0.7 );
+			-webkit-transform: rotateY( -90deg) translateZ(50px);
+		}
+		.perspective-5 {
+			background-color: rgba( 196, 196, 0, 0.7 );
+			-webkit-transform: rotateX( 90deg) translateZ(50px);
+		}
+		.perspective-6 {
+			background-color: rgba( 196, 0, 196, 0.7);
+			-webkit-transform: rotateX( -90deg) translateZ(50px);
+		}
+	</style>
+</head>
+<body>
+	<a href="#perspective-content">Transform</a>
+	<div class="perspective">
+		<div class="perspective-1 perspective-content">
+			1
+		</div>
+		<div class="perspective-2 perspective-content">
+			2
+		</div>
+		<div class="perspective-3 perspective-content">
+			3
+		</div>
+		<div class="perspective-4 perspective-content">
+			4
+		</div>
+		<div class="perspective-5 perspective-content">
+			5
+		</div>
+		<div class="perspective-6 perspective-content">
+			6
+		</div>
+
+	</div>
+</body>
+</html>
