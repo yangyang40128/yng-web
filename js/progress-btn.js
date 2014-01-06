@@ -3,7 +3,7 @@
 	Modernizr.addTest('csstransformspreserve3d',function(){
 		var prop = Modernizr.prefixed('transformStyle');
 		var val = 'preserve-3d';
-
+		var computedStyle;
 		if ( !prop ) return false;
 		// change WebkitTransformStyle to -webkit-transform-style
 		prop = prop.replace(/[A-Z]/g,function(str,m1){
@@ -25,7 +25,7 @@
 		return a;
 	}
 	// get support for transition ,transition end event
-	var support = {transitions:Modernizr.csstransitions,transform3d: Modernizr.csstransforms3d && csstransformspreserve3d},
+	var support = {transitions:Modernizr.csstransitions,transform3d: Modernizr.csstransforms3d && Modernizr.csstransformspreserve3d},
 		transEndEventNames = {
 			'WebkitTransition':'webkitTransitionEnd',
 			'MozTransition' : 'transitionend',
@@ -112,10 +112,11 @@
 		},
 		_start : function () {
 			// disable button;
-			self.button.setAttribute('disabled','');
+			this.button.setAttribute('disabled','');
 			// addd class state-loading to button;
-			classie.remove( self.progress, 'notransition' );
-			classie.add(self,'state-loading');
+			classie.remove( this.progress, 'notransition' );
+			classie.add(this.button,'state-loading');
+			var self = this;
 			// progress button;
 			setTimeout( function () {
 				if ( typeof self.options.callback === 'function') {
@@ -132,7 +133,7 @@
 						self._stop();
 					}
 					if ( support.transitions ) {
-						self.progress.addEventListener( transEndEventName , onEndTransFn );
+						self.progressInner.addEventListener( transEndEventName , onEndTransFn );
 					}
 					else {
 						onEndTransFn.call();
@@ -143,23 +144,23 @@
 			self.button.getAttribute('data-style') === 'top-line' ||
 			self.button.getAttribute('data-style') === 'lateral-lines' ? 0 : 200);
 		},
-		_stop : function () {
+		_stop : function ( state ) {
 			var self = this;
 			setTimeout ( function () {
 				// hide progress;
-				self.progress.style.opacity = 0;
+				self.progressInner.style.opacity = 0;
 				// on transition end , reset progress 
 				var onEndTransFn = function ( ev ) {
 					if ( support.transitions && ev.propertyName !== 'opacity') {
 						return;
 					}
 					this.removeEventListener( transEndEventName ,onEndTransFn);
-					classie.add( self.progress , 'notranstion');
-					self.progress.style[self.progressProp] = '0%';
-					self.progress.style.opacity = 1;
+					classie.add( self.progressInner , 'notransition');
+					self.progressInner.style[self.progressProp] = '0%';
+					self.progressInner.style.opacity = 1;
 				};
 				if ( support.transitions ) {
-					self.progress.addEventListener( transEndEventName ,onEndTransFn);
+					self.progressInner.addEventListener( transEndEventName ,onEndTransFn);
 				}
 				else {
 					onEndTransFn.call();
@@ -168,7 +169,7 @@
 				if ( typeof state === 'number') {
 					var stateClass = state >= 0 ? 'state-success' : 'state-error';
 					classie.add(self.button,stateClass);
-					setTimeout ( function {
+					setTimeout ( function (){
 						classie.remove(self.button, stateClass);
 						self._enable();
 					},self.options.stateTime );
@@ -180,9 +181,28 @@
 				classie.remove(self.button,'state-loading')
 			},100);
 		},
+		_setProgress : function ( val ) {
+			this.progressInner.style[this.progressProp] = 100*val + '%';
+		},
 		_enable : function () {
 			this.button.removeAttribute('disabled');
 		}
 	}
 	window.ProgressButton = ProgressButton;
 })(window);
+onDomReady(function () {
+	new ProgressButton(document.querySelector('.progress-btn'),{
+					callback : function( instance ) {
+						var progress = 0,
+							interval = setInterval( function() {
+								progress = Math.min( progress + Math.random() * 0.1, 1 );
+								instance._setProgress( progress );
+
+								if( progress === 1 ) {
+									instance._stop(1);
+									clearInterval( interval );
+								}
+							}, 200 );
+					}
+				});
+})
